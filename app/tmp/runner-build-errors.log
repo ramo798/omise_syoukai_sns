@@ -1,0 +1,1 @@
+go build main: copying /tmp/go-build043987093/b001/exe/a.out: open tmp/runner-build: operation not permitted
