@@ -1,21 +1,16 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
+	"github.com/gin-gonic/gin"
 )
 
-func init() {
-	http.HandleFunc("/", index)
-}
-
-func index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Hello World2222")
-}
-
 func main() {
-	fmt.Print("Server Start")
-	if err := http.ListenAndServe(":8080", nil); err != nil {
-		panic(err)
-	}
+	router := gin.Default()
+	router.Use(gin.Logger())
+
+	router.GET("/", func(c *gin.Context) {
+		c.String(200, "hello, API")
+	})
+
+	router.Run(":8080")
 }
