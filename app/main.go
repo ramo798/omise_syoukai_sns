@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/ramo798/omise_syoukai_sns/db"
 )
 
 func main() {
@@ -13,4 +14,5 @@ func main() {
 	})
 
 	router.Run(":8080")
+	db.Test()
 }
