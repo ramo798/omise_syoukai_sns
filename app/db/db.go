@@ -2,6 +2,7 @@ package db
 
 import (
 	"database/sql"
+	"log"
 
 	"github.com/ramo798/omise_syoukai_sns/model"
 
@@ -9,7 +10,7 @@ import (
 )
 
 // Res_restaurant_info is レストランIDを受け取ってRestaurant_infoを返す
-func Res_restaurant_info(restaurant_id string) []model.Restaurant_info {
+func Res_restaurant_info(restaurant_id string) ([]model.Restaurant_info, error) {
 	db, err := sql.Open("mysql", "root:root@tcp(mysql_host:3306)/mydatabase")
 	if err != nil {
 		panic(err.Error())
@@ -17,7 +18,6 @@ func Res_restaurant_info(restaurant_id string) []model.Restaurant_info {
 	defer db.Close()
 
 	rows, err := db.Query("SELECT * FROM restaurant_info WHERE ID = ?", restaurant_id)
-
 	defer rows.Close()
 	if err != nil {
 		panic(err.Error())
@@ -36,6 +36,11 @@ func Res_restaurant_info(restaurant_id string) []model.Restaurant_info {
 		res = append(res, info)
 	}
 
-	return res
+	if len(res) == 0 {
+		log.Println("検索結果はありません。")
+		return nil, err
+	}
+
+	return res, nil
 
 }
