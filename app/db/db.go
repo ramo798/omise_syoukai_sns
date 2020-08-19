@@ -5,29 +5,39 @@ import (
 	"log"
 
 	"github.com/ramo798/omise_syoukai_sns/model"
-
+	// aaa
 	_ "github.com/go-sql-driver/mysql"
 )
 
-// Res_restaurant_info is レストランIDを受け取ってRestaurant_infoを返す
-func Res_restaurant_info(restaurant_id string) ([]model.Restaurant_info, error) {
+func initDb() *sql.DB {
+	db, err := sql.Open("mysql", "root:root@tcp(mysql_host:3306)/mydatabase")
+	if err != nil {
+		panic(err.Error())
+	}
+
+	// log.Println("-----", reflect.TypeOf(db))
+	return db
+}
+
+// ResRestaurantInfo is レストランIDを受け取ってRestaurant_infoを返す
+func ResRestaurantInfo(restaurantID string) ([]model.RestaurantInfo, error) {
 	db, err := sql.Open("mysql", "root:root@tcp(mysql_host:3306)/mydatabase")
 	if err != nil {
 		panic(err.Error())
 	}
 	defer db.Close()
 
-	rows, err := db.Query("SELECT * FROM restaurant_info WHERE ID = ?", restaurant_id)
+	rows, err := db.Query("SELECT * FROM restaurant_info WHERE ID = ?", restaurantID)
 	defer rows.Close()
 	if err != nil {
 		panic(err.Error())
 	}
 
-	var res []model.Restaurant_info
+	var res []model.RestaurantInfo
 
 	for rows.Next() {
-		var info model.Restaurant_info
-		err := rows.Scan(&info.ID, &info.Name, &info.Address, &info.Logo_image_url, &info.Station_name)
+		var info model.RestaurantInfo
+		err := rows.Scan(&info.ID, &info.Name, &info.Address, &info.LogoImageURL, &info.StationName)
 		if err != nil {
 			panic(err.Error())
 		}

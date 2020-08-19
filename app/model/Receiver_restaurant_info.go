@@ -1,5 +1,6 @@
 package model
 
-type Receiver_restaurant_info struct {
-	Restaurant_id string `json:"restaurant_id"`
+// ReceiverRestaurantInfo is ポストで値受け取る用の構造体
+type ReceiverRestaurantInfo struct {
+	RestaurantID string `json:"restaurant_id"`
 }

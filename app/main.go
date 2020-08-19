@@ -15,6 +15,8 @@ func main() {
 	})
 	router.POST("/getrestaurantinfo", handler.Get_restaurant_info)
 
+	router.GET("/postlist/all", handler.Get_all_post)
+
 	router.Run(":8080")
 
 }
