@@ -31,12 +31,13 @@ DROP TABLE IF EXISTS post_list;
 
 CREATE TABLE post_list
 (
-  id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  id MEDIUMINT NOT NULL AUTO_INCREMENT,
   users_id VARCHAR(30),
   comment VARCHAR(240),
   restaurant_id VARCHAR(100),
   price INT,
-  assessment INT
+  assessment INT,
+  PRIMARY KEY (id)
 );
 INSERT INTO post_list (users_id,comment,restaurant_id,price,assessment) VALUES ("ramo123", "めちゃおいしいです。","J0000",4500,80);
 INSERT INTO post_list (users_id,comment,restaurant_id,price,assessment) VALUES ("ramo456", "めちゃおいしいです。sasasa","J0000",4500,80);
