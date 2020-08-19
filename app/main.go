@@ -13,9 +13,9 @@ func main() {
 	router.GET("/", func(c *gin.Context) {
 		c.String(200, "hello, API")
 	})
-	router.POST("/getrestaurantinfo", handler.Get_restaurant_info)
+	router.POST("/getrestaurantinfo", handler.GetRestaurantInfo)
 
-	router.GET("/postlist/all", handler.Get_all_post)
+	router.GET("/postlist/all", handler.GetAllPost)
 
 	router.Run(":8080")
 

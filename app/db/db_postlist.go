@@ -1,8 +1,6 @@
 package db
 
 import (
-	"log"
-
 	"github.com/ramo798/omise_syoukai_sns/model"
 )
 
@@ -29,7 +27,7 @@ func GetterAllPost() ([]model.Post, error) {
 		posts = append(posts, post)
 	}
 
-	log.Println("--------------", posts)
+	// log.Println("--------------", posts)
 
 	return posts, nil
 }
