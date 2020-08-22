@@ -19,6 +19,8 @@ func main() {
 
 	router.GET("/postlist/user/:username", handler.GetUserPost)
 
+	router.POST("/post/register", handler.PostRegist)
+
 	router.Run(":8080")
 
 }
