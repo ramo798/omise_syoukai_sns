@@ -17,7 +17,7 @@ func main() {
 
 	router.GET("/postlist/all", handler.GetAllPost)
 
-	// router.GET("/postlist/:user", handler.GetUserPost)
+	router.GET("/postlist/user/:usersname", handler.GetUserPost)
 
 	router.Run(":8080")
 

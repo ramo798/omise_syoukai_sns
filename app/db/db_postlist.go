@@ -1,8 +1,6 @@
 package db
 
 import (
-	"log"
-
 	"github.com/ramo798/omise_syoukai_sns/model"
 )
 
@@ -41,7 +39,7 @@ func GetterUserPost(username string) ([]model.Post, error) {
 
 	// username := "ramo123"
 	query := "SELECT * FROM post_list" + " WHERE " + " users_id = " + "'" + username + "'"
-	log.Println(query)
+	// log.Println(query)
 
 	rows, err := db.Query(query)
 	defer rows.Close()
@@ -61,9 +59,9 @@ func GetterUserPost(username string) ([]model.Post, error) {
 		posts = append(posts, post)
 	}
 
-	log.Println(posts)
+	// log.Println(posts)
 
-	log.Println("--------------", posts)
+	// log.Println("--------------", posts)
 
 	return posts, nil
 
