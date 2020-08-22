@@ -37,9 +37,8 @@ func GetterUserPost(username string) ([]model.Post, error) {
 	db := initDb()
 	defer db.Close()
 
-	// username := "ramo123"
 	query := "SELECT * FROM post_list" + " WHERE " + " users_id = " + "'" + username + "'"
-	// log.Println(query)
+	// log.Println("db_postlist.getteruserpost-----query:", query)
 
 	rows, err := db.Query(query)
 	defer rows.Close()
