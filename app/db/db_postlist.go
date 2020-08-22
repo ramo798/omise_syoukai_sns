@@ -35,11 +35,11 @@ func GetterAllPost() ([]model.Post, error) {
 }
 
 // GetterUserPost is 特定のユーザのポストリストをとってくる
-func GetterUserPost() {
+func GetterUserPost(username string) ([]model.Post, error) {
 	db := initDb()
 	defer db.Close()
 
-	username := "ramo123"
+	// username := "ramo123"
 	query := "SELECT * FROM post_list" + " WHERE " + " users_id = " + "'" + username + "'"
 	log.Println(query)
 
@@ -63,8 +63,8 @@ func GetterUserPost() {
 
 	log.Println(posts)
 
-	// log.Println("--------------", posts)
+	log.Println("--------------", posts)
 
-	// return posts, nil
+	return posts, nil
 
 }
