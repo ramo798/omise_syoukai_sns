@@ -45,28 +45,11 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
 export default {
-  data() {
-    return {
-      posts: [],
-      assessment: [],
-    }
-  },
-  beforeCreate() {
-    axios
-      .get('http://localhost:8080/postlist/all')
-      .then((response) => (this.posts = response.data))
-      .then((response) => this.meu())
-  },
-  methods: {
-    meu() {
-      //   console.log(this.posts)
-      for (let i = 0; i < this.posts.length; ++i) {
-        // console.log(this.posts[i].assessment)
-        this.posts[i].assessment = parseInt(this.posts[i].assessment, 10)
-        console.log(typeof this.posts[i].assessment)
-      }
+  props: {
+    posts: {
+      type: Array,
+      default: () => {},
     },
   },
 }

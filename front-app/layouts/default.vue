@@ -15,7 +15,7 @@
       </v-btn>
     </v-bottom-navigation>
     <v-container v-if="menutoggle == 2">
-      <Cards></Cards>
+      <nuxt />
     </v-container>
   </v-app>
 </template>
